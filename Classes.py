@@ -1,13 +1,13 @@
 class Professor:
     professores = []
-    
+
     def __init__(self, nome, matricula, data_nasc):
         self.nome = nome
         self.matricula = matricula
         self.data_nasc = data_nasc
         if Professor.find(matricula) == None:
             Professor.professores.append(self)
-    
+
     @staticmethod
     def find(matricula):
         for p in Professor.professores:
@@ -15,16 +15,17 @@ class Professor:
                 return p
         return None
 
+
 class Aluno:
     alunos = []
-    
+
     def __init__(self, nome, matricula, data_nasc):
         self.nome = nome
         self.matricula = matricula
         self.data_nasc = data_nasc
         if Aluno.find(matricula) == None:
             Aluno.alunos.append(self)
-    
+
     @staticmethod
     def find(matricula):
         for p in Aluno.alunos:
@@ -32,22 +33,24 @@ class Aluno:
                 return p
         return None
 
+
 class Disciplina:
     disciplinas = []
-    
+
     def __init__(self, cod, nome, matricula_prof):
         self.cod = cod
         self.nome = nome
         self.matricula_prof = matricula_prof
         if Disciplina.find(cod) == None:
             Disciplina.disciplinas.append(self)
-   
+
     @staticmethod
     def find(cod):
         for p in Disciplina.disciplinas:
             if p.cod == cod:
                 return p
         return None
+
 
 class Nota:
     notas = []
@@ -57,9 +60,9 @@ class Nota:
         self.matricula_aluno = matricula_aluno
         self.n1 = n1
         self.n2 = n2
-        if Nota.find(cod_disciplina, matricula_aluno) == None:
+        if Nota.find(cod_disciplina, matricula_aluno) is None:
             Nota.notas.append(self)
-    
+
     @staticmethod
     def find(cod_disciplina, matricula_aluno):
         for p in Nota.notas:

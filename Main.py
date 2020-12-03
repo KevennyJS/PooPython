@@ -1,5 +1,5 @@
-import Classes
 import Functions
+import Classes
 
 try:
     open('Alunos.xlsx', 'r')
@@ -9,10 +9,13 @@ except IOError:
 
 Functions.getDataFramefromExcel()
 
+
 def main():
+    print('a')
     while True:
         try:
-            print("----Menu----\n1---Cadastro Professor\n2---Cadastrar Aluno\n3---Cadastrar Disciplina\n4---Cadastrar nota\n5---Relátorio de Notas\n6---Sair")
+            print(
+                "----Menu----\n1---Cadastro Professor\n2---Cadastrar Aluno\n3---Cadastrar Disciplina\n4---Cadastrar nota\n5---Relátorio de Notas\n6---Sair")
             opcao = int(input("Informe uma opção: "))
         except ValueError:
             print("Selecione uma opção válida!")
@@ -35,4 +38,6 @@ def main():
         if opcao == 6:
             Functions.salvarDataframe()
             break
+
+
 main()
