@@ -11,8 +11,6 @@ Functions.getDataFramefromExcel()
 
 
 def main():
-    print('hello Nworld')
-    print('oi')
     while True:
         try:
             print(
