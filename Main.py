@@ -33,17 +33,14 @@ def main():
         except ValueError:
             print("Selecione uma opção válida!")
             continue
-        if opcao == 1:
+        if opcao == 1: #OK
             Functions_prova.cadastrar_proprietario()
-            #Functions.cadastrar_professor()
             print()
-        elif opcao == 2:
+        elif opcao == 2: #OK
             Functions_prova.cadastrar_imovel()
-            #Functions.cadastrar_aluno()
             print()
-        elif opcao == 3:
+        elif opcao == 3: #OK
             Functions_prova.cadastrar_inquilino()
-            #Functions.cadastrar_disciplina()
             print()
         elif opcao == 4:
             Functions.cadastrar_nota()

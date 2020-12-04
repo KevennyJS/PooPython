@@ -67,7 +67,7 @@ def registrar_aluguel():
         else:
             print("Data inválida!")
             continue
-    //Inquilino(cpf, codigo,  data_de_inicio)
+    #Inquilino(cpf, codigo,  data_de_inicio)
     print("Inquilino foi criado com sucesso!")
 
 ##Relátorio do Proprietário##
