@@ -80,14 +80,13 @@ def relatorioProp(cpf):
         print("Esse proprietário não se encontra no banco de dados!")
 
 ##Relátorio do Inquilino##
-def relatorioInqui(cpf):
-    inquilino = Inquilino.find(int(cpf))
-    if inquilino != None:
-        nome_inquilino = inquilino.nome
+def relatorioInqui():
+    for dado in Inquilino.inquilinos:
+        inquilino = Inquilino.find(dado.cpf)
+        nome_do_inquilino = inquilino.nome
         cpf_inquilino = inquilino.cpf
         nasc_inquilino = inquilino.data_nasc
-    else:
-        print("Esse inquilino não se encontra no banco de dados!")
+        print(f"Inquilino: {nome_do_inquilino} CPF: {cpf_inquilino} Data de nascimento: {nasc_inquilino}")
 
 ##Relátorio de Imóveis##
 def relatorioImov(cod_imovel):

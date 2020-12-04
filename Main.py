@@ -55,7 +55,7 @@ def main():
             Functions.cadastrar_nota()
             print()
         elif opcao == 8:
-            Functions.cadastrar_nota()
+            Functions_prova.relatorioInqui()
             print()
         elif opcao == 9:
             Functions.cadastrar_nota()
