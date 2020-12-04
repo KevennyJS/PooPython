@@ -121,3 +121,29 @@ def salvarDataframe():
     excel_writer = pd.ExcelWriter('Professores.xlsx')
     dados.to_excel(excel_writer, 'Plan1', index=False)
     excel_writer.save()
+
+def getDataFramefromExcel():
+    # Proprietário
+    dados = pd.read_excel('Proprietarios.xlsx')
+    for i in range(len(dados)):
+        nome = dados.loc[i][0]
+        cpf = dados.loc[i][1]
+        data_nascimento = dados.loc[i][2]
+        Proprietario(nome, cpf, data_nascimento)
+    # Imovel
+    dados = pd.read_excel('Imovel.xlsx')
+    for i in range(len(dados)):
+        codigo = dados.loc[i][0]
+        cpf_proprietario = dados.loc[i][1]
+        tipo = dados.loc[i][2]
+        endereco = dados.loc[i][3]
+        valor_aluguel = dados.loc[i][4]
+        status_alugado = dados.loc[i][5]
+        Proprietario(codigo, cpf_proprietario, tipo, endereco, valor_aluguel, status_alugado)
+    # Inquilino
+    dados = pd.read_excel('Inquilinos.xlsx')
+    for i in range(len(dados)):
+        nome = dados.loc[i][0]
+        cpf = dados.loc[i][1]
+        data_nascimento = dados.loc[i][2]
+        Inquilino(nome, cpf, data_nascimento)
