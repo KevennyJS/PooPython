@@ -1,5 +1,6 @@
 import Functions
 import Classes
+import Functions_prova
 
 try:
     open('Alunos.xlsx', 'r')
@@ -33,13 +34,16 @@ def main():
             print("Selecione uma opção válida!")
             continue
         if opcao == 1:
-            Functions.cadastrar_professor()
+            Functions_prova.cadastrar_proprietario()
+            #Functions.cadastrar_professor()
             print()
         elif opcao == 2:
-            Functions.cadastrar_aluno()
+            Functions_prova.cadastrar_imovel()
+            #Functions.cadastrar_aluno()
             print()
         elif opcao == 3:
-            Functions.cadastrar_disciplina()
+            Functions_prova.cadastrar_inquilino()
+            #Functions.cadastrar_disciplina()
             print()
         elif opcao == 4:
             Functions.cadastrar_nota()
