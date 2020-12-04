@@ -27,7 +27,7 @@ def cadastrar_imovel():
     while True:
         codigo = input("Informe o codigo do imovel: ")
         cpf = input("Informe a CPF do proprietário do Imovel: ")
-        nome = ""
+        #nome = ""
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
         if tipo != 'CASA' and tipo != 'APARTAMENTO':
             print("tipo inválida!")
@@ -39,7 +39,7 @@ def cadastrar_imovel():
             print("status inválida!")
         else:
             break
-    Imovel(codigo, cpf, nome, tipo, endereco, valor, status)
+    Imovel(codigo, cpf, tipo, endereco, valor, status)
     print("imovel foi criado com sucesso!")
 
 
@@ -110,13 +110,16 @@ def relatorioImov():
         imoveis = Imovel.find(dado.cod)
         codigo = imoveis.cod
         cpf_proprietario = imoveis.cpf_prop
-        nome_proprietario = imoveis.nome_prop
+        #nome_proprietario = imoveis.nome_prop
+        for prop in Proprietario.proprietarios:
+            propietario = Proprietario.find(cpf_proprietario)
+            nome_do_propietario = propietario.nome
         tipo = imoveis.tipo
         endereco = imoveis.endereco
         valor_aluguel = imoveis.valor_aluguel
         status = imoveis.status_alugado
         print(
-            f"Código: {codigo} // CPF do Proprietário: {cpf_proprietario} // Nome do Proprietário: {nome_proprietario} // Tipo: {tipo} // Endereço: {endereco} // Valor do Aluguel: {valor_aluguel} // Status de Alugado: {status}")
+            f"Código: {codigo} // CPF do Proprietário: {cpf_proprietario} // Nome do Proprietário: {nome_do_propietario} // Tipo: {tipo} // Endereço: {endereco} // Valor do Aluguel: {valor_aluguel} // Status de Alugado: {status}")
 
 
 def criarDataFrame():
