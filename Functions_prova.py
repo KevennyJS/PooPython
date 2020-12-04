@@ -111,14 +111,36 @@ def criarDataFrame():
     inquilino_dataframe.to_excel('Inquilino.xlsx', 'Plan1', index=False)
 
 def salvarDataframe():
-    # Salvar professor no excel
+    # Salvar proprietario no excel
     i = 0
-    dados = pd.read_excel('Professores.xlsx')
-    for professor in Professor.professores:
-        linha = [professor.nome, professor.matricula, professor.data_nasc]
+    dados = pd.read_excel('Proprietario.xlsx')
+    for proprietario in Proprietario.proprietarios:
+        linha = [proprietario.nome, proprietario.cpf, proprietario.data_nasc]
         dados.loc[i] = linha
         i += 1
-    excel_writer = pd.ExcelWriter('Professores.xlsx')
+    excel_writer = pd.ExcelWriter('Proprietario.xlsx')
+    dados.to_excel(excel_writer, 'Plan1', index=False)
+    excel_writer.save()
+
+    # Salvar imovel no excel
+    i = 0
+    dados = pd.read_excel('Proprietario.xlsx')
+    for imovel in Imovel.imoveis:
+        linha = [imovel.cod, imovel.cpf_prop, imovel.tipo, imovel.endereco, imovel.valor_aluguel, imovel.status_alugado]
+        dados.loc[i] = linha
+        i += 1
+    excel_writer = pd.ExcelWriter('Imovel.xlsx')
+    dados.to_excel(excel_writer, 'Plan1', index=False)
+    excel_writer.save()
+
+    # Salvar inquilino no excel
+    i = 0
+    dados = pd.read_excel('Inquilino.xlsx')
+    for inquilino in Inquilino.inquilinos:
+        linha = [inquilino.nome, inquilino.cpf, inquilino.data_nasc]
+        dados.loc[i] = linha
+        i += 1
+    excel_writer = pd.ExcelWriter('Inquilino.xlsx')
     dados.to_excel(excel_writer, 'Plan1', index=False)
     excel_writer.save()
 
