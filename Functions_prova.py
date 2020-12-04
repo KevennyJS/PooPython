@@ -185,12 +185,12 @@ def getDataFramefromExcel():
     for i in range(len(dados)):
         codigo = dados.loc[i][0]
         cpf_proprietario = dados.loc[i][1]
-        nome_proprietario = dados.loc[i][2]
-        tipo = dados.loc[i][3]
-        endereco = dados.loc[i][4]
-        valor_aluguel = dados.loc[i][5]
-        status_alugado = dados.loc[i][6]
-        Imovel(codigo, cpf_proprietario, nome_proprietario, tipo, endereco, valor_aluguel, status_alugado)
+        #nome_proprietario = dados.loc[i][2]
+        tipo = dados.loc[i][2]
+        endereco = dados.loc[i][3]
+        valor_aluguel = dados.loc[i][4]
+        status_alugado = dados.loc[i][5]
+        Imovel(codigo, cpf_proprietario, tipo, endereco, valor_aluguel, status_alugado)
     # Inquilino
     dados = pd.read_excel('Inquilinos.xlsx')
     for i in range(len(dados)):
