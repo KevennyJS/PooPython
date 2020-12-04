@@ -26,7 +26,12 @@ def cadastrar_proprietario():
 def cadastrar_imovel():
     while True:
         codigo = input("Informe o codigo do imovel: ")
-        cpf = input("Informe a CPF do proprietário do Imovel: ")
+        while True:
+            cpf = input("Informe a CPF do proprietário do Imovel: ")
+            for prop in Proprietario.proprietarios:
+                propietario = Proprietario.find(cpf)
+            if propietario != None:
+                break
         #nome = ""
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
         if tipo != 'CASA' and tipo != 'APARTAMENTO':
