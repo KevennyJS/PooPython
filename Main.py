@@ -14,7 +14,14 @@ def main():
     while True:
         try:
             print(
-                "----Menu----\n1---Cadastro Professor\n2---Cadastrar Aluno\n3---Cadastrar Disciplina\n4---Cadastrar nota\n5---Relátorio de Notas\n6---Sair")
+                "----Menu----\n"
+                "1---Cadastro Professor\n"
+                "2---Cadastrar Aluno\n"
+                "3---Cadastrar Disciplina\n"
+                "4---Cadastrar nota\n"
+                "5---Relátorio de Notas\n"
+                "6---Sair")
+            
             opcao = int(input("Informe uma opção: "))
         except ValueError:
             print("Selecione uma opção válida!")
