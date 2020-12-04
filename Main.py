@@ -15,13 +15,19 @@ def main():
         try:
             print(
                 "----Menu----\n"
-                "1---Cadastro Professor\n"
-                "2---Cadastrar Aluno\n"
-                "3---Cadastrar Disciplina\n"
-                "4---Cadastrar nota\n"
-                "5---Relátorio de Notas\n"
-                "6---Sair")
-            
+                "1---Cadastrar Proprietário\n"
+                "2---Cadastrar Imóvel\n"
+                "3---Cadastrar Inquilino\n"
+                "4---Registrar Aluguel\n"
+                "5---Finalizar Aluguel\n"
+                "6---Relatório de Proprietários\n"
+                "7---Relatório de Imóveis\n"
+                "8---Relatório de Inquilinos\n"
+                "9---Relatório de Aluguéis\n"
+                "10---Relatório de Comissões\n"
+
+                "0---Sair")
+
             opcao = int(input("Informe uma opção: "))
         except ValueError:
             print("Selecione uma opção válida!")
@@ -29,19 +35,34 @@ def main():
         if opcao == 1:
             Functions.cadastrar_professor()
             print()
-        if opcao == 2:
+        elif opcao == 2:
             Functions.cadastrar_aluno()
             print()
-        if opcao == 3:
+        elif opcao == 3:
             Functions.cadastrar_disciplina()
             print()
-        if opcao == 4:
+        elif opcao == 4:
             Functions.cadastrar_nota()
             print()
-        if opcao == 5:
+        elif opcao == 5:
             cod_disciplina = input("Informe o código da disciplina: ")
             Functions.relatorio(cod_disciplina)
-        if opcao == 6:
+        elif opcao == 6:
+            Functions.cadastrar_nota()
+            print()
+        elif opcao == 7:
+            Functions.cadastrar_nota()
+            print()
+        elif opcao == 8:
+            Functions.cadastrar_nota()
+            print()
+        elif opcao == 9:
+            Functions.cadastrar_nota()
+            print()
+        elif opcao == 10:
+            Functions.cadastrar_nota()
+            print()
+        elif opcao == 0:
             Functions.salvarDataframe()
             break
 
