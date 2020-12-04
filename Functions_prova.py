@@ -1,4 +1,9 @@
 ###Cadastrar Prorpietario###
+from datetime import date
+
+from Classes_prova import Proprietario, Imovel, Inquilino
+
+
 def cadastrar_proprietario():
     nome = input("Informe o nome do proprietario: ")
     while True:
@@ -27,7 +32,7 @@ def cadastrar_imovel():
         else:
             print("Data inválida!")
             continue
-    Imovel(nome, cpf, data_de_nascimento)
+    Imovel(codigo, cpf, data_de_nascimento)
     print("Proprietario foi criado com sucesso!")
 
 ###Cadastrar Prorpietario###
