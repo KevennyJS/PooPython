@@ -27,6 +27,7 @@ def cadastrar_imovel():
     while True:
         codigo = input("Informe o codigo do imovel: ")
         cpf = input("Informe a CPF do proprietário do Imovel: ")
+        nome = ""
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
         if tipo != 'CASA' and tipo != 'APARTAMENTO':
             print("tipo inválida!")
@@ -38,7 +39,7 @@ def cadastrar_imovel():
             print("status inválida!")
         else:
             break
-    Imovel(codigo, cpf, tipo, endereco, valor, status)
+    Imovel(codigo, cpf, nome, tipo, endereco, valor, status)
     print("imovel foi criado com sucesso!")
 
 
@@ -109,18 +110,18 @@ def relatorioImov():
         imoveis = Imovel.find(dado.cod)
         codigo = imoveis.cod
         cpf_proprietario = imoveis.cpf_prop
-        # nome_proprietario =
+        nome_proprietario = imoveis.nome_prop
         tipo = imoveis.tipo
         endereco = imoveis.endereco
         valor_aluguel = imoveis.valor_aluguel
         status = imoveis.status_alugado
         print(
-            f"Código: {codigo} // CPF do Proprietário: {cpf_proprietario} // Nome do Proprietário:  // Tipo: {tipo} // Endereço: {endereco} // Valor do Aluguel: {valor_aluguel} // Status de Alugado: {status}")
+            f"Código: {codigo} // CPF do Proprietário: {cpf_proprietario} // Nome do Proprietário: {nome_proprietario} // Tipo: {tipo} // Endereço: {endereco} // Valor do Aluguel: {valor_aluguel} // Status de Alugado: {status}")
 
 
 def criarDataFrame():
     proprietario_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  # Dataframe Proprietario
-    imovel_dataframe = pd.DataFrame(columns=['Codigo', 'Cpf do Proprietario', 'Tipo', 'Endereco', 'Valor Aluguel',
+    imovel_dataframe = pd.DataFrame(columns=['Codigo', 'Cpf do Proprietario', 'Nome do Proprietario', 'Tipo', 'Endereco', 'Valor Aluguel',
                                              'Status Alugado'])  # Dataframe Imovel
     inquilino_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  # Dataframe Inquilino
     proprietario_dataframe.to_excel('Proprietarios.xlsx', 'Plan1', index=False)
@@ -176,11 +177,12 @@ def getDataFramefromExcel():
     for i in range(len(dados)):
         codigo = dados.loc[i][0]
         cpf_proprietario = dados.loc[i][1]
-        tipo = dados.loc[i][2]
-        endereco = dados.loc[i][3]
-        valor_aluguel = dados.loc[i][4]
-        status_alugado = dados.loc[i][5]
-        Imovel(codigo, cpf_proprietario, tipo, endereco, valor_aluguel, status_alugado)
+        nome_proprietario = dados.loc[i][2]
+        tipo = dados.loc[i][3]
+        endereco = dados.loc[i][4]
+        valor_aluguel = dados.loc[i][5]
+        status_alugado = dados.loc[i][6]
+        Imovel(codigo, cpf_proprietario, nome_proprietario, tipo, endereco, valor_aluguel, status_alugado)
     # Inquilino
     dados = pd.read_excel('Inquilinos.xlsx')
     for i in range(len(dados)):

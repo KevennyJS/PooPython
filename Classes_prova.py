@@ -35,9 +35,10 @@ class Inquilino:
 class Imovel:
     imoveis = []
 
-    def __init__(self, cod, cpf_prop, tipo, endereco, valor_aluguel, status_alugado):
+    def __init__(self, cod, cpf_prop, nome_prop, tipo, endereco, valor_aluguel, status_alugado):
         self.cod = cod
         self.cpf_prop = cpf_prop
+        self.nome_prop = nome_prop
         self.tipo = tipo
         self.endereco = endereco
         self.valor_aluguel = valor_aluguel
