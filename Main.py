@@ -64,7 +64,7 @@ def main():
             Functions.cadastrar_nota()
             print()
         elif opcao == 0:
-            Functions.salvarDataframe()
+            Functions_prova.salvarDataframe()            #Functions.salvarDataframe()
             break
 
 
