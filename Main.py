@@ -3,12 +3,12 @@ import Classes
 import Functions_prova
 
 try:
-    open('Alunos.xlsx', 'r')
+    open('Proprietarios.xlsx', 'r')
 except IOError:
     print('Criando novos arquivos...')
-    Functions.criarDataFrame()
+    Functions_prova.criarDataFrame()
 
-Functions.getDataFramefromExcel()
+Functions_prova.getDataFramefromExcel()
 
 
 def main():

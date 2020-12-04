@@ -1,13 +1,13 @@
 import pandas as pd
 from datetime import date
 
-from Classes_prova import Proprietario, Imovel, Inquilino
+from Classes_prova import *
 
 ###Cadastrar Prorpietario###
 def cadastrar_proprietario():
     while True:
         nome = input("Informe o nome do proprietario: ")
-        cpf = input("Informe a matricula do proprietario: ")
+        cpf = input("Informe a CPF do proprietario: ")
         data = input("Informe a data de nascimento do proprietario (DD/MM/AAAA): ")
         data = data.split('/')
         if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
@@ -23,8 +23,7 @@ def cadastrar_proprietario():
 def cadastrar_imovel():
     while True:
         codigo = input("Informe o codigo do imovel: ")
-        cpf = input("Informe a matricula do professor: ")
-        data = input("Informe a data de nascimento do professor (DD/MM/AAAA): ")
+        cpf = input("Informe a CPF do professor: ")
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
         if tipo != 'CASA' and tipo != 'APARTAMENTO':
             print("tipo inválida!")
@@ -43,7 +42,7 @@ def cadastrar_imovel():
 def cadastrar_inquilino():
     while True:
         nome = input("Informe o nome do inquilino: ")
-        cpf = input("Informe a matricula do inquilino: ")
+        cpf = input("Informe a CPF do inquilino: ")
         data = input("Informe a data de nascimento do inquilino (DD/MM/AAAA): ")
         data = data.split('/')
         if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
