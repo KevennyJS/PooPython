@@ -54,3 +54,36 @@ def cadastrar_inquilino():
             continue
     Inquilino(nome, cpf, data_de_nascimento)
     print("Inquilino foi criado com sucesso!")
+
+##Relátorio do Proprietário##
+def relatorioProp(cpf):
+    proprietario = Proprietario.find(int(cpf))
+    if proprietario != None:
+        nome_proprietario = proprietario.nome
+        cpf_proprietario = proprietario.cpf
+        nasc_proprietario = proprietario.data_nasc
+    else:
+        print("Esse proprietário não se encontra no banco de dados!")
+
+##Relátorio do Inquilino##
+def relatorioInqui(cpf):
+    inquilino = Inquilino.find(int(cpf))
+    if inquilino != None:
+        nome_inquilino = inquilino.nome
+        cpf_inquilino = inquilino.cpf
+        nasc_inquilino = inquilino.data_nasc
+    else:
+        print("Esse inquilino não se encontra no banco de dados!")
+
+##Relátorio de Imóveis##
+def relatorioImov(cod_imovel):
+    imovel = Imovel.find(int(cod_imovel))
+    if imovel != None:
+        cpf_proprietario = Proprietario.find(imovel.cpf).cpf_prop
+        tipo_imovel = imovel.tipo
+        endereco_imovel = imovel.endereco
+        valor_aluguel_imovel = imovel.valor_aluguel
+        status_alugado_imovel = imovel.status_alugado
+    else:
+        print("Esse imóvel não se encontra no banco de dados!")
+
