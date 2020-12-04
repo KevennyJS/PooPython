@@ -75,8 +75,7 @@ def criarDataFrame():
     professores_dataframe = pd.DataFrame(columns=['Nome', 'Matricula', 'Data de Nascimento'])  # Dataframe Professor
     alunos_dataframe = pd.DataFrame(columns=['Nome', 'Matricula', 'Data de Nascimento'])  # Dataframe Aluno
     disciplinas_dataframe = pd.DataFrame(columns=['Codigo', 'Nome', 'Matricula do professor'])  # Dataframe Disciplinas
-    notas_dataframe = pd.DataFrame(
-        columns=['Codigo da Disciplina', 'Matrícula do aluno', 'Nota 1', 'Nota 2'])  # Dataframe Notas
+    notas_dataframe = pd.DataFrame(columns=['Codigo da Disciplina', 'Matrícula do aluno', 'Nota 1', 'Nota 2'])  # Dataframe Notas
     professores_dataframe.to_excel('Professores.xlsx', 'Plan1', index=False)
     alunos_dataframe.to_excel('Alunos.xlsx', 'Plan1', index=False)
     disciplinas_dataframe.to_excel('Disciplinas.xlsx', 'Plan1', index=False)

@@ -1,9 +1,9 @@
-###Cadastrar Prorpietario###
+import pandas as pd
 from datetime import date
 
 from Classes_prova import Proprietario, Imovel, Inquilino
 
-
+###Cadastrar Prorpietario###
 def cadastrar_proprietario():
     while True:
         nome = input("Informe o nome do proprietario: ")
@@ -102,3 +102,22 @@ def relatorioImov(cod_imovel):
     else:
         print("Esse imóvel não se encontra no banco de dados!")
 
+def criarDataFrame():
+    proprietario_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  # Dataframe Proprietario
+    imovel_dataframe = pd.DataFrame(columns=['Codigo', 'Cpf do Proprietario', 'Tipo', 'Endereco', 'Valor Aluguel', 'Status Alugado'])  # Dataframe Imovel
+    inquilino_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  # Dataframe Inquilino
+    proprietario_dataframe.to_excel('Proprietario.xlsx', 'Plan1', index=False)
+    imovel_dataframe.to_excel('Imovel.xlsx', 'Plan1', index=False)
+    inquilino_dataframe.to_excel('Inquilino.xlsx', 'Plan1', index=False)
+
+def salvarDataframe():
+    # Salvar professor no excel
+    i = 0
+    dados = pd.read_excel('Professores.xlsx')
+    for professor in Professor.professores:
+        linha = [professor.nome, professor.matricula, professor.data_nasc]
+        dados.loc[i] = linha
+        i += 1
+    excel_writer = pd.ExcelWriter('Professores.xlsx')
+    dados.to_excel(excel_writer, 'Plan1', index=False)
+    excel_writer.save()
