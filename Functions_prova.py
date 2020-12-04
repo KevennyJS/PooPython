@@ -5,8 +5,8 @@ from Classes_prova import Proprietario, Imovel, Inquilino
 
 
 def cadastrar_proprietario():
-    nome = input("Informe o nome do proprietario: ")
     while True:
+        nome = input("Informe o nome do proprietario: ")
         cpf = input("Informe a matricula do proprietario: ")
         data = input("Informe a data de nascimento do proprietario (DD/MM/AAAA): ")
         data = data.split('/')
@@ -21,8 +21,8 @@ def cadastrar_proprietario():
 
 ###Cadastrar Imovel###
 def cadastrar_imovel():
-    codigo = input("Informe o codigo do imovel: ")
     while True:
+        codigo = input("Informe o codigo do imovel: ")
         cpf = input("Informe a matricula do professor: ")
         data = input("Informe a data de nascimento do professor (DD/MM/AAAA): ")
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
@@ -41,8 +41,8 @@ def cadastrar_imovel():
 
 ###Cadastrar Inquilino###
 def cadastrar_inquilino():
-    nome = input("Informe o nome do inquilino: ")
     while True:
+        nome = input("Informe o nome do inquilino: ")
         cpf = input("Informe a matricula do inquilino: ")
         data = input("Informe a data de nascimento do inquilino (DD/MM/AAAA): ")
         data = data.split('/')
@@ -53,6 +53,21 @@ def cadastrar_inquilino():
             print("Data inválida!")
             continue
     Inquilino(nome, cpf, data_de_nascimento)
+    print("Inquilino foi criado com sucesso!")
+
+def registrar_aluguel():
+    while True:
+        cpf = input("Informe o CPF do inquilino: ")
+        codigo = input("Informe o código do imovel: ")
+        data = input("Informe a data de inicio (DD/MM/AAAA): ")
+        data = data.split('/')
+        if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
+            data_de_inicio = date(int(data[2]), int(data[1]), int(data[0]))
+            break
+        else:
+            print("Data inválida!")
+            continue
+    //Inquilino(cpf, codigo,  data_de_inicio)
     print("Inquilino foi criado com sucesso!")
 
 ##Relátorio do Proprietário##
