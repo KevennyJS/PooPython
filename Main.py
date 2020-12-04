@@ -46,13 +46,12 @@ def main():
             Functions.cadastrar_nota()
             print()
         elif opcao == 5:
-            cod_disciplina = input("Informe o código da disciplina: ")
-            Functions.relatorio(cod_disciplina)
+            print(6)
         elif opcao == 6:
-            Functions.cadastrar_nota()
+            Functions_prova.relatorioProp()
             print()
         elif opcao == 7:
-            Functions.cadastrar_nota()
+            Functions_prova.relatorioImov()
             print()
         elif opcao == 8:
             Functions_prova.relatorioInqui()
