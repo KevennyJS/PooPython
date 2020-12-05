@@ -72,6 +72,7 @@ def cadastrar_inquilino():
     print("Inquilino foi criado com sucesso!")
 
 
+##REGISTRANDO ALUGUEL##
 def registrar_aluguel():
     while True:
         cpf_inquilino = input("Informe o CPF do inquilino: ")
@@ -86,9 +87,7 @@ def registrar_aluguel():
         for imov in Imovel.imoveis:
             imovel = Imovel.find(cod_imovel)
             Imovel.find(cod_imovel).status_alugado = 'SIM'
-            teste = Imovel.find(cod_imovel).status_alugado
         if imovel != None:
-            print(teste)
             break
         else:
             print("==== ERRO: codigo Invalido, informe um codigo valido ====")
@@ -105,6 +104,26 @@ def registrar_aluguel():
     Aluguel(cpf_inquilino, cod_imovel, data_de_inicio, data_de_fim)
     print("Inquilino foi criado com sucesso!")
 
+
+##FINALIZANDO ALUGUEL##
+def finalizar_aluguel():
+    while True:
+        cpf_inquilino = input("Informe o CPF do inquilino: ")
+        for inq in Inquilino.inquilinos:
+            inquilino = Inquilino.find(cpf_inquilino)
+        if inquilino != None:
+            break
+        else:
+            print("==== ERRO: CPF Invalido, informe um CPF valido ====")
+    while True:
+        cod_imovel = input("Informe o código do imovel: ")
+        for imov in Imovel.imoveis:
+            imovel = Imovel.find(cod_imovel)
+            Imovel.find(cod_imovel).status_alugado = 'NAO'
+        if imovel != None:
+            break
+        else:
+            print("==== ERRO: codigo Invalido, informe um codigo valido ====")
 
 ##Relátorio do Proprietário##
 def relatorioProp():
