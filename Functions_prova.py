@@ -86,9 +86,16 @@ def registrar_aluguel():
         cod_imovel = input("Informe o código do imovel: ")
         for imov in Imovel.imoveis:
             imovel = Imovel.find(cod_imovel)
-            Imovel.find(cod_imovel).status_alugado = 'SIM'
         if imovel != None:
-            break
+            esta_alugado = Imovel.find(cod_imovel).status_alugado
+            #VERIFICA SE JÁ ESTÁ ALUGADO E APRESENTA ERRO CASO JÁ ESTEJA
+            if esta_alugado == 'NAO':
+                Imovel.find(cod_imovel).status_alugado = 'SIM'
+                break
+            else:
+                print('=== ERRO: O IMOVEL JÁ ESTÁ ALUGADO ===')
+                #sai da função
+                return 0
         else:
             print("==== ERRO: codigo Invalido, informe um codigo valido ====")
     while True:
