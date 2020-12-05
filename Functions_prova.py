@@ -32,6 +32,8 @@ def cadastrar_imovel():
                 propietario = Proprietario.find(cpf)
             if propietario != None:
                 break
+            else:
+                print("==== ERRO: CPF Invalido, informe um CPF valido ====")
         #nome = ""
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
         if tipo != 'CASA' and tipo != 'APARTAMENTO':
@@ -177,7 +179,7 @@ def getDataFramefromExcel():
     dados = pd.read_excel('Proprietarios.xlsx')
     for i in range(len(dados)):
         nome = dados.loc[i][0]
-        cpf = dados.loc[i][1]
+        cpf = str(dados.loc[i][1])
         data_nascimento = dados.loc[i][2]
         Proprietario(nome, cpf, data_nascimento)
     # Imovel
@@ -195,6 +197,6 @@ def getDataFramefromExcel():
     dados = pd.read_excel('Inquilinos.xlsx')
     for i in range(len(dados)):
         nome = dados.loc[i][0]
-        cpf = dados.loc[i][1]
+        cpf = str(dados.loc[i][1])
         data_nascimento = dados.loc[i][2]
         Inquilino(nome, cpf, data_nascimento)
