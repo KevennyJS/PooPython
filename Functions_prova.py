@@ -169,16 +169,16 @@ def salvarDataframe():
     dados.to_excel(excel_writer, 'Plan1', index=False)
     excel_writer.save()
 
-    # Salvar imovel no excel
-    i = 0
-    dados = pd.read_excel('Imoveis.xlsx')
-    for imovel in Imovel.imoveis:
-        linha = [imovel.cod, imovel.cpf_prop, imovel.tipo, imovel.endereco, imovel.valor_aluguel, imovel.status_alugado]
-        dados.loc[i] = linha
-        i += 1
-    excel_writer = pd.ExcelWriter('Imoveis.xlsx')
-    dados.to_excel(excel_writer, 'Plan1', index=False)
-    excel_writer.save()
+    # # Salvar imovel no excel
+    # i = 0
+    # dados = pd.read_excel('Imoveis.xlsx')
+    # for imovel in Imovel.imoveis:
+    #     linha = [imovel.cod, imovel.cpf_prop, imovel.tipo, imovel.endereco, imovel.valor_aluguel, imovel.status_alugado]
+    #     dados.loc[i] = linha
+    #     i += 1
+    # excel_writer = pd.ExcelWriter('Imoveis.xlsx')
+    # dados.to_excel(excel_writer, 'Plan1', index=False)
+    # excel_writer.save()
 
     # Salvar inquilino no excel
     i = 0
@@ -229,10 +229,10 @@ def getDataFramefromExcel():
         data_nascimento = dados.loc[i][2]
         Inquilino(nome, cpf, data_nascimento)
     # Aluguel
-        dados = pd.read_excel('Aluguel.xlsx')
-        for i in range(len(dados)):
-            cpf_inquilino = dados.loc[i][0]
-            codigo_imovel = str(dados.loc[i][1])
-            data_inicio = dados.loc[i][2]
-            data_fim = dados.loc[i][3]
-            Aluguel(cpf_inquilino, codigo_imovel, data_inicio, data_fim)
+    dados = pd.read_excel('Aluguel.xlsx')
+    for i in range(len(dados)):
+        cpf_inquilino = dados.loc[i][0]
+        codigo_imovel = str(dados.loc[i][1])
+        data_inicio = dados.loc[i][2]
+        data_fim = dados.loc[i][3]
+        Aluguel(cpf_inquilino, codigo_imovel, data_inicio, data_fim)
