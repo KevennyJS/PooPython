@@ -60,12 +60,12 @@ class Aluguel:
         self.cod_imovel = cod_imovel
         self.data_inicio = data_inicio
         self.data_fim = data_fim
-        if Aluguel.find(cod_inquilino) == None:
+        if Aluguel.find(cod_imovel) == None:
             Aluguel.alugueis.append(self)
 
     @staticmethod
     def find(cod):
         for p in Aluguel.alugueis:
-            if p.cod_inquilino == cod_inquilino:
+            if p.cod_imovel == cod:
                 return p
         return None

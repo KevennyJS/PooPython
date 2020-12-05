@@ -69,17 +69,30 @@ def cadastrar_inquilino():
 def registrar_aluguel():
     while True:
         cpf_inquilino = input("Informe o CPF do inquilino: ")
+        for inq in Inquilino.inquilinos:
+            inquilino = Inquilino.find(cpf_inquilino)
+        if inquilino != None:
+            break
+        else:
+            print("==== ERRO: CPF Invalido, informe um CPF valido ====")
+    while True:
         cod_imovel = input("Informe o código do imovel: ")
-        while True:
-            data = input("Informe a data de inicio (DD/MM/AAAA): ")
-            data = data.split('/')
-            if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
-                data_de_inicio = date(int(data[2]), int(data[1]), int(data[0]))
-                break
-            else:
-                print("Informe uma data valida!")
-                continue
-        data_de_fim = ""
+        for imov in Imovel.imoveis:
+            imovel = Imovel.find(cod_imovel)
+        if imovel != None:
+            break
+        else:
+            print("==== ERRO: codigo Invalido, informe um codigo valido ====")
+    while True:
+        data = input("Informe a data de inicio (DD/MM/AAAA): ")
+        data = data.split('/')
+        if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
+            data_de_inicio = date(int(data[2]), int(data[1]), int(data[0]))
+            break
+        else:
+            print("Informe uma data valida!")
+            continue
+    data_de_fim = ""
     Aluguel(cpf_inquilino, cod_imovel,  data_de_inicio, data_de_fim)
     print("Inquilino foi criado com sucesso!")
 

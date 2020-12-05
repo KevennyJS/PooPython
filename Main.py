@@ -43,7 +43,7 @@ def main():
             Functions_prova.cadastrar_inquilino()
             print()
         elif opcao == 4:
-            Functions.cadastrar_nota()
+            Functions_prova.registrar_aluguel()
             print()
         elif opcao == 5:
             print(6)
