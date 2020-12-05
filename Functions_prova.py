@@ -182,6 +182,39 @@ def relatorioImov():
             f"Código: {codigo} // CPF do Proprietário: {cpf_proprietario} // Nome do Proprietário: {nome_do_propietario} // Tipo: {tipo} // Endereço: {endereco} // Valor do Aluguel: {valor_aluguel} // Status de Alugado: {status}")
 
 
+##Relátorio De aluguel##
+def relatorioAluguel():
+    print("============RELATÓRIO INQUILINO=============")
+    for dado in Aluguel.alugueis:
+        inquilino = Inquilino.find(dado.cpf_inquilino)
+        nome_do_inquilino = inquilino.nome
+        imovel = Imovel.find(dado.cod_imovel)
+        codigo_imovel = imovel.cod
+        tipo_imovel = imovel.tipo
+        endereco_imovel = imovel.endereco
+
+        proprietario = Proprietario.find(imovel.cpf_prop)
+        nome_proprietario = proprietario.nome
+
+        valor_imovel = imovel.valor_aluguel
+
+        aluguel = Aluguel.find(dado.cod_imovel)
+
+        data_inicio = aluguel.data_inicio
+
+        if aluguel.data_fim is not pd.NaT:
+            data_fim = aluguel.data_fim
+
+        print(f"Inquilino: {nome_do_inquilino}\n"
+              f"Código: {codigo_imovel} // Tipo: {tipo_imovel} // Endereço: {endereco_imovel} // Nome do Proprietário: {nome_proprietario}\n"
+              f"Valor do Aluguel: {valor_imovel},\n"
+              f"Data De Inicio: {data_inicio}")
+        if aluguel.data_fim is not pd.NaT:
+            print(f"Data de Finalização: {data_fim}")
+
+        print("==================================================================")
+
+###CRIAR DATAFRAME###
 def relatorioComissoes():
     print("============RELATÓRIO COMISSÃO=============")
     for p in Imovel.imoveis:

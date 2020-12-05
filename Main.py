@@ -1,5 +1,4 @@
 import Functions
-import Classes
 import Functions_prova
 
 try:
@@ -58,7 +57,7 @@ def main():
             Functions_prova.relatorioInqui()
             print()
         elif opcao == 9:
-            Functions.cadastrar_nota()
+            Functions_prova.relatorioAluguel()
             print()
         elif opcao == 10:
             Functions_prova.relatorioComissoes()
