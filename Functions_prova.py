@@ -182,6 +182,24 @@ def relatorioImov():
             f"Código: {codigo} // CPF do Proprietário: {cpf_proprietario} // Nome do Proprietário: {nome_do_propietario} // Tipo: {tipo} // Endereço: {endereco} // Valor do Aluguel: {valor_aluguel} // Status de Alugado: {status}")
 
 
+def relatorioComissoes():
+    print("============RELATÓRIO COMISSÃO=============")
+    for p in Imovel.imoveis:
+        valorAl = float(p.valor_aluguel)
+        print(f'Valor do Aluguel: {valorAl}', end=' // ')
+        for q in Aluguel.alugueis:
+            if p.cod == q.cod_imovel:
+                dataI = q.data_inicio
+                dataF = q.data_fim
+                print(f'Data de início: {dataI}', end=' // ')
+                break
+        dataI = dataI.split('-')
+        dataF = dataF.split('-')
+        sub = int(dataF[1]) - int(dataI[1])
+        print(f'Comissão: {valorAl*0.1}  //  Sub{sub}')
+
+
+
 def criarDataFrame():
     proprietario_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  # Dataframe Proprietario
     imovel_dataframe = pd.DataFrame(columns=['Codigo', 'Cpf do Proprietario', 'Tipo', 'Endereco', 'Valor Aluguel',

@@ -61,7 +61,7 @@ def main():
             Functions.cadastrar_nota()
             print()
         elif opcao == 10:
-            Functions.cadastrar_nota()
+            Functions_prova.relatorioComissoes()
             print()
         elif opcao == 0:
             Functions_prova.salvarDataframe()            #Functions.salvarDataframe()
