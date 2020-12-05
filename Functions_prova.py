@@ -124,6 +124,17 @@ def finalizar_aluguel():
             break
         else:
             print("==== ERRO: codigo Invalido, informe um codigo valido ====")
+    while True:
+        data = input("Informe a data de finalização(DD/MM/AAAA): ")
+        data = data.split('/')
+        if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
+            data_de_finalizacao = date(int(data[2]), int(data[1]), int(data[0]))
+            break
+        else:
+            print("Informe uma data valida!")
+            continue
+    Aluguel.find(cod_imovel).data_fim = data_de_finalizacao
+    print('FINALIZAÇÃO DE ALUGUEL FEITO COM SUCESSO!!')
 
 ##Relátorio do Proprietário##
 def relatorioProp():

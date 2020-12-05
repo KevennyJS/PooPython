@@ -2,11 +2,7 @@ a) OK
 b) OK
 c) OK
 d) OK
-e)
-    a) OK
-    b)
-    c) OK
-
+e) OK
 f) OK
 g) OK
 h) OK

@@ -46,6 +46,7 @@ def main():
             Functions_prova.registrar_aluguel()
             print()
         elif opcao == 5:
+            Functions_prova.finalizar_aluguel()
             print()
         elif opcao == 6:
             Functions_prova.relatorioProp()
