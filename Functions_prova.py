@@ -102,7 +102,7 @@ def registrar_aluguel():
             continue
     data_de_fim = ""
     Aluguel(cpf_inquilino, cod_imovel, data_de_inicio, data_de_fim)
-    print("Inquilino foi criado com sucesso!")
+    print("Registro foi criado com sucesso!")
 
 
 ##FINALIZANDO ALUGUEL##
