@@ -42,11 +42,11 @@ def main():
         elif opcao == 3: #OK
             Functions_prova.cadastrar_inquilino()
             print()
-        elif opcao == 4:
+        elif opcao == 4: #OK
             Functions_prova.registrar_aluguel()
             print()
         elif opcao == 5:
-            print(6)
+            print()
         elif opcao == 6:
             Functions_prova.relatorioProp()
             print()

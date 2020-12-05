@@ -79,7 +79,10 @@ def registrar_aluguel():
         cod_imovel = input("Informe o código do imovel: ")
         for imov in Imovel.imoveis:
             imovel = Imovel.find(cod_imovel)
+            Imovel.find(cod_imovel).status_alugado = 'SIM'
+            teste = Imovel.find(cod_imovel).status_alugado
         if imovel != None:
+            print(teste)
             break
         else:
             print("==== ERRO: codigo Invalido, informe um codigo valido ====")
