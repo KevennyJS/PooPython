@@ -218,18 +218,23 @@ def relatorioAluguel():
 def relatorioComissoes():
     print("============RELATÓRIO COMISSÃO=============")
     for p in Imovel.imoveis:
-        valorAl = float(p.valor_aluguel)
-        print(f'Valor do Aluguel: {valorAl}', end=' // ')
-        for q in Aluguel.alugueis:
-            if p.cod == q.cod_imovel:
-                dataI = q.data_inicio
-                dataF = q.data_fim
-                print(f'Data de início: {dataI}', end=' // ')
-                break
-        dataI = dataI.split('-')
-        dataF = dataF.split('-')
-        sub = int(dataF[1]) - int(dataI[1])
-        print(f'Comissão: {valorAl*0.1}  //  Sub{sub}')
+        aluguel = Aluguel.find(p.cod)
+        if aluguel.data_fim is not pd.NaT:
+            valorAl = float(p.valor_aluguel)
+            print(f'Valor do Aluguel: {valorAl}',)
+            dataI = str(aluguel.data_inicio)
+            print(f"Data Inicial: {dataI.split(' ')[0]}")
+            dataF = str(aluguel.data_fim)
+
+            mes_inicio = int(dataI.split('-')[1])
+            mes_final = int(dataF.split('-')[1])
+            if mes_inicio != mes_final:
+                mes = mes_final - mes_inicio
+            else:
+                mes = 1
+
+            print(f'Comissão: {valorAl*0.1}')
+            print(f'Comissão Total: {(valorAl*0.1)*mes }')
 
 
 
