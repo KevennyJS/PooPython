@@ -26,7 +26,7 @@ def main():
                 "9---Relatório de Aluguéis\n"
                 "10---Relatório de Comissões\n"
 
-                "0---Sair")
+                "0---Sair e Salvar")
 
             opcao = int(input("Informe uma opção: "))
         except ValueError:
@@ -63,7 +63,7 @@ def main():
             Functions_prova.relatorioComissoes()
             print()
         elif opcao == 0:
-            Functions_prova.salvarDataframe()            #Functions.salvarDataframe()
+            Functions_prova.salvarDataframe()
             break
 
 

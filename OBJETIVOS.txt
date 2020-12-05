@@ -8,5 +8,3 @@ g) OK
 h) OK
 i) OK
 j) OK
-
-obs: fazer filtro pra nao alugar um imovel que já esta alugado

@@ -116,17 +116,15 @@ def registrar_aluguel():
 def finalizar_aluguel():
     while True:
         cpf_inquilino = input("Informe o CPF do inquilino: ")
-        for inq in Inquilino.inquilinos:
-            inquilino = Inquilino.find(cpf_inquilino)
+        inquilino = Inquilino.find(cpf_inquilino)
         if inquilino != None:
             break
         else:
             print("==== ERRO: CPF Invalido, informe um CPF valido ====")
     while True:
         cod_imovel = input("Informe o código do imovel: ")
-        for imov in Imovel.imoveis:
-            imovel = Imovel.find(cod_imovel)
-            Imovel.find(cod_imovel).status_alugado = 'NAO'
+        imovel = Imovel.find(cod_imovel)
+        Imovel.find(cod_imovel).status_alugado = 'NAO'
         if imovel != None:
             break
         else:
