@@ -2,6 +2,8 @@ a) OK
 b) OK
 c) OK
 
+
+
 f) OK
-g) (adicionar nome do proprietário)
+g) OK
 h) OK

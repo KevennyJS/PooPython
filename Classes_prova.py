@@ -38,7 +38,6 @@ class Imovel:
     def __init__(self, cod, cpf_prop, tipo, endereco, valor_aluguel, status_alugado):
         self.cod = cod
         self.cpf_prop = cpf_prop
-        #self.nome_prop = nome_prop
         self.tipo = tipo
         self.endereco = endereco
         self.valor_aluguel = valor_aluguel
@@ -50,5 +49,23 @@ class Imovel:
     def find(cod):
         for p in Imovel.imoveis:
             if p.cod == cod:
+                return p
+        return None
+
+class Aluguel:
+    alugueis = []
+
+    def __init__(self, cpf_inquilino, cod_imovel, data_inicio, data_fim):
+        self.cpf_inquilino = cpf_inquilino
+        self.cod_imovel = cod_imovel
+        self.data_inicio = data_inicio
+        self.data_fim = data_fim
+        if Aluguel.find(cod_inquilino) == None:
+            Aluguel.alugueis.append(self)
+
+    @staticmethod
+    def find(cod):
+        for p in Aluguel.alugueis:
+            if p.cod_inquilino == cod_inquilino:
                 return p
         return None
