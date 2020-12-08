@@ -244,7 +244,12 @@ def relatorioComissoes():
 
             print(f'Comissão: {valorAl*0.1}')
             if (ano_final - ano_inicio) > 0:
-                print(f'Comissão Total: {((valorAl*0.1)*mes) * (ano_final - ano_inicio)*12}')
+                if ano_final - ano_inicio == 1:
+                    quant_meses = (12 - mes_inicio) + mes_final
+                else:
+                    print()#linha pra evitar erro
+                    #todo caso seja mais que um ano
+                print(f'Comissão Total: {((valorAl * 0.1) * quant_meses)}')
             else:
                 print(f'Comissão Total: {(valorAl * 0.1) * mes}')
 
