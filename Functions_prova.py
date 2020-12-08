@@ -28,8 +28,9 @@ def cadastrar_imovel():
         codigo = input("Informe o codigo do imovel: ")
         while True:
             cpf_proprietario = input("Informe a CPF do proprietário do Imovel: ")
-            for prop in Proprietario.proprietarios:
-                propietario = Proprietario.find(cpf_proprietario)
+
+            propietario = Proprietario.find(cpf_proprietario)
+
             if propietario != None:
                 break
             else:
@@ -176,9 +177,9 @@ def relatorioImov():
         codigo = imoveis.cod
         cpf_proprietario = imoveis.cpf_prop
         # nome_proprietario = imoveis.nome_prop
-        for prop in Proprietario.proprietarios:
-            propietario = Proprietario.find(cpf_proprietario)
-            nome_do_propietario = propietario.nome
+        propietario = Proprietario.find(cpf_proprietario)
+        nome_do_propietario = propietario.nome
+
         tipo = imoveis.tipo
         endereco = imoveis.endereco
         valor_aluguel = imoveis.valor_aluguel
@@ -219,12 +220,11 @@ def relatorioAluguel():
 
         print("==================================================================")
 
-###CRIAR DATAFRAME###
 def relatorioComissoes():
     print("============RELATÓRIO COMISSÃO=============")
     for p in Imovel.imoveis:
         aluguel = Aluguel.find(p.cod)
-        if aluguel.data_fim is not pd.NaT:
+        if aluguel.data_fim is not pd.NA:
             valorAl = float(p.valor_aluguel)
             print(f'Valor do Aluguel: {valorAl}',)
             dataI = str(aluguel.data_inicio)
@@ -232,17 +232,23 @@ def relatorioComissoes():
             dataF = str(aluguel.data_fim)
 
             mes_inicio = int(dataI.split('-')[1])
+            ano_inicio = int(dataI.split('-')[0])
             mes_final = int(dataF.split('-')[1])
+            ano_final = int(dataF.split('-')[0])
+
+
             if mes_inicio != mes_final:
                 mes = mes_final - mes_inicio
             else:
                 mes = 1
 
             print(f'Comissão: {valorAl*0.1}')
-            print(f'Comissão Total: {(valorAl*0.1)*mes }')
+            if (ano_final - ano_inicio) > 0:
+                print(f'Comissão Total: {((valorAl*0.1)*mes) * (ano_final - ano_inicio)*12}')
+            else:
+                print(f'Comissão Total: {(valorAl * 0.1) * mes}')
 
-
-
+###CRIAR DATAFRAME###
 def criarDataFrame():
     proprietario_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  # Dataframe Proprietario
     imovel_dataframe = pd.DataFrame(columns=['Codigo', 'Cpf do Proprietario', 'Tipo', 'Endereco', 'Valor Aluguel',
