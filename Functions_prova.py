@@ -7,9 +7,9 @@ import os
 
 ###Cadastrar Prorpietario###
 def cadastrar_proprietario():
+    nome = input("Informe o nome do proprietario: ")
+    cpf = input("Informe a CPF do proprietario: ")
     while True:
-        nome = input("Informe o nome do proprietario: ")
-        cpf = input("Informe a CPF do proprietario: ")
         data = input("Informe a data de nascimento do proprietario (DD/MM/AAAA): ")
         data = data.split('/')
         if data[0].isnumeric() and data[1].isnumeric() and data[2].isnumeric():
@@ -24,26 +24,30 @@ def cadastrar_proprietario():
 
 ###Cadastrar Imovel###
 def cadastrar_imovel():
+    codigo = input("Informe o codigo do imovel: ")
     while True:
-        codigo = input("Informe o codigo do imovel: ")
-        while True:
-            cpf_proprietario = input("Informe a CPF do proprietário do Imovel: ")
+        cpf_proprietario = input("Informe a CPF do proprietário do Imovel: ")
 
-            propietario = Proprietario.find(cpf_proprietario)
+        propietario = Proprietario.find(cpf_proprietario)
 
-            if propietario != None:
-                break
-            else:
-                print("==== ERRO: CPF Invalido, informe um CPF valido ====")
+        if propietario != None:
+            break
+        else:
+            print("==== ERRO: CPF Invalido, informe um CPF valido ====")
+    while True:
         tipo = input("Informe o tipo (CASA, APARTAMENTO): ")
         if tipo != 'CASA' and tipo != 'APARTAMENTO':
             print("tipo inválida!")
             continue
-        endereco = input("Informe endereço: ")
-        valor = input("Informe o valor do aluguel: ")
+        else:
+            break
+    endereco = input("Informe endereço: ")
+    valor = input("Informe o valor do aluguel: ")
+    while True:
         status = input("Informe o Status de alugado (SIM, NAO): ")
         if status != 'SIM' and status != 'NAO':
             print("status inválida!")
+            continue
         else:
             break
     Imovel(codigo, cpf_proprietario, tipo, endereco, valor, status)
@@ -68,7 +72,6 @@ def cadastrar_inquilino():
             print("Data inválida!")
             continue
 
-
     Inquilino(nome, cpf, data_de_nascimento)
     print("Inquilino foi criado com sucesso!")
 
@@ -77,25 +80,23 @@ def cadastrar_inquilino():
 def registrar_aluguel():
     while True:
         cpf_inquilino = input("Informe o CPF do inquilino: ")
-        for inq in Inquilino.inquilinos:
-            inquilino = Inquilino.find(cpf_inquilino)
+        inquilino = Inquilino.find(cpf_inquilino)
         if inquilino != None:
             break
         else:
             print("==== ERRO: CPF Invalido, informe um CPF valido ====")
     while True:
         cod_imovel = input("Informe o código do imovel: ")
-        for imov in Imovel.imoveis:
-            imovel = Imovel.find(cod_imovel)
+        imovel = Imovel.find(cod_imovel)
         if imovel != None:
             esta_alugado = Imovel.find(cod_imovel).status_alugado
-            #VERIFICA SE JÁ ESTÁ ALUGADO E APRESENTA ERRO CASO JÁ ESTEJA
+            # VERIFICA SE JÁ ESTÁ ALUGADO E APRESENTA ERRO CASO JÁ ESTEJA
             if esta_alugado == 'NAO':
                 Imovel.find(cod_imovel).status_alugado = 'SIM'
                 break
             else:
                 print('=== ERRO: O IMOVEL JÁ ESTÁ ALUGADO ===')
-                #sai da função
+                # sai da função
                 return 0
         else:
             print("==== ERRO: codigo Invalido, informe um codigo valido ====")
@@ -125,8 +126,8 @@ def finalizar_aluguel():
     while True:
         cod_imovel = input("Informe o código do imovel: ")
         imovel = Imovel.find(cod_imovel)
-        Imovel.find(cod_imovel).status_alugado = 'NAO'
         if imovel != None:
+            Imovel.find(cod_imovel).status_alugado = 'NAO'
             break
         else:
             print("==== ERRO: codigo Invalido, informe um codigo valido ====")
@@ -141,6 +142,7 @@ def finalizar_aluguel():
             continue
     Aluguel.find(cod_imovel).data_fim = data_de_finalizacao
     print('FINALIZAÇÃO DE ALUGUEL FEITO COM SUCESSO!!')
+
 
 ##Relátorio do Proprietário##
 def relatorioProp():
@@ -168,15 +170,9 @@ def relatorioInqui():
 def relatorioImov():
     print("============RELATÓRIO IMOVEL=============")
     for dado in Imovel.imoveis:
-        # imoveis = Imovel.find(dado.cod)
-        # tipo_imovel = imoveis.tipo
-        # endereco_imovel = imoveis.endereco
-        # valor_aluguel_imovel = imoveis.valor_aluguel
-        # status_alugado_imovel = imoveis.status_alugado
         imoveis = Imovel.find(dado.cod)
         codigo = imoveis.cod
         cpf_proprietario = imoveis.cpf_prop
-        # nome_proprietario = imoveis.nome_prop
         propietario = Proprietario.find(cpf_proprietario)
         nome_do_propietario = propietario.nome
 
@@ -220,13 +216,14 @@ def relatorioAluguel():
 
         print("==================================================================")
 
+
 def relatorioComissoes():
     print("============RELATÓRIO COMISSÃO=============")
     for p in Imovel.imoveis:
         aluguel = Aluguel.find(p.cod)
         if aluguel.data_fim is not pd.NA:
             valorAl = float(p.valor_aluguel)
-            print(f'Valor do Aluguel: {valorAl}',)
+            print(f'Valor do Aluguel: {valorAl}', )
             dataI = str(aluguel.data_inicio)
             print(f"Data Inicial: {dataI.split(' ')[0]}")
             dataF = str(aluguel.data_fim)
@@ -236,21 +233,21 @@ def relatorioComissoes():
             mes_final = int(dataF.split('-')[1])
             ano_final = int(dataF.split('-')[0])
 
-
             if mes_inicio != mes_final:
                 mes = mes_final - mes_inicio
             else:
                 mes = 1
 
-            print(f'Comissão: {valorAl*0.1}')
+            print(f'Comissão: {valorAl * 0.1}')
             if (ano_final - ano_inicio) > 0:
                 if ano_final - ano_inicio == 1:
                     quant_meses = (12 - mes_inicio) + mes_final
                 else:
-                    quant_meses = (((ano_final - ano_inicio)-1)*12) + ((12 - mes_inicio) + mes_final)
+                    quant_meses = (((ano_final - ano_inicio) - 1) * 12) + ((12 - mes_inicio) + mes_final)
                 print(f'Comissão Total: {((valorAl * 0.1) * quant_meses)}')
             else:
                 print(f'Comissão Total: {(valorAl * 0.1) * mes}')
+
 
 ###CRIAR DATAFRAME###
 def criarDataFrame():
